@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Details Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Alumni Details Form</h1>
+        <form id="alumniForm" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter MailADD " required>
+            </div>
+            <div class="form-group">
+                <label for="gradyear">Graduation Year:</label>
+                <input type="number" class="form-control" id="gradyear" placeholder="Enter your graduation year">
+            </div>
+            <div class="form-group">
+                <label for="major">Major:</label>
+                <input type="text" class="form-control" id="degree" placeholder="Enter your major">
+            </div>
+
+            <div class="form-group">
+                <label for="jobtitle">Current Job Title:</label>
+                <input type="text" class="form-control" id="jobtitle" placeholder="Enter your current job title">
+              </div>
+
+
+            <div class="form-group">
+                <label for="jobcompany">Current Company:</label>
+      <input type="text" class="form-control" id="jobcompany" placeholder="Enter your current company">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script>
+        var alumniData = {}; // Object to store form data temporarily
+        var form = document.getElementById('alumniForm');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            alumniData.name = document.getElementById('name').value;
+            alumniData.email = document.getElementById('email').value;
+            alumniData.batch = document.getElementById('gradyear').value;
+            alumniData.degree = document.getElementById('degree').value;
+            alumniData.degree = document.getElementById('jobtitle').value;
+            alumniData.department = document.getElementById('jobcompany').value;
+            sessionStorage.setItem('alumniData', JSON.stringify(alumniData));
+            window.location.href = "alumnidetail.html"; // Output the form data to console for testing purposes
+            // Add code to save the form data to a database or perform any other desired action
+             // Reset the form after submission
+        });
+    </script>
+</body>
+</html>
