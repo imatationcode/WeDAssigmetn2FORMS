@@ -1,0 +1,74 @@
+<!--  alumnidetail.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Alumni Details</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container my-5">
+		<h1>Alumni Details</h1>
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Name:</th>
+					<td id="name"></td>
+				</tr>
+				<tr>
+					<th>Email:</th>
+					<td id="email"></td>
+				</tr>
+                <tr>
+                    <th>Degree:</th>
+                    <td id="degree"></td>
+                 </tr>
+            	<tr>
+					<th>Batch:</th>
+					<td id="gradyear"></td>
+				</tr>
+				<tr>
+					<th>Current Profile:</th>
+					<td id="jobtitle"></td>
+				</tr>
+                
+				<tr>
+						<th>At Company :</th>
+						<td id="jobcompany"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<!-- Bootstrap JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+	<script>
+		// Retrieve form data from session storage
+		var alumniData = JSON.parse(sessionStorage.getItem('alumniData'));
+
+        
+
+		// Check if alumniData exists and has all required fields
+		if (!alumniData) {
+			console.error("No alumni data found in session storage.");
+		} else if (!alumniData.name || !alumniData.email || !alumniData.batch || !alumniData.degree || !alumniData.department) {
+			console.error("Alumni data is missing required fields.");
+		} else {
+			// Populate table cells with form data
+			document.getElementById('name').textContent = alumniData.name;
+			document.getElementById('email').textContent = alumniData.email;
+			document.getElementById('gradyear').textContent = alumniData.batch;
+			document.getElementById('degree').textContent = alumniData.degree;
+            document.getElementById('jobtitle').textContent = alumniData.degree;
+			document.getElementById('jobcompany').textContent = alumniData.department;
+		}
+	</script>
+</body>
+</html>
+
